@@ -1,0 +1,320 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "sản phẩm 1",
+      "price": 1550000,
+      "image": "./image/product_1.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "drill"
+    },
+    {
+      "id": 2,
+      "name": "sản phẩm 2",
+      "price": 3540000,
+      "image": "./image/product_2.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "drill"
+    },
+    {
+      "id": 3,
+      "name": "sản phẩm 3",
+      "price": 2110000,
+      "image": "./image/product_3.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "hammer"
+    },
+    {
+      "id": 4,
+      "name": "sản phẩm 4",
+      "price": 550000,
+      "image": "./image/product_4.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "drill"
+    },
+    {
+      "id": 5,
+      "name": "sản phẩm 5",
+      "price": 6150000,
+      "image": "./image/product_5.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "drill"
+    },
+    {
+      "id": 6,
+      "name": "sản phẩm 6",
+      "price": 3420000,
+      "image": "./image/product_6.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "hammer"
+    },
+    {
+      "id": 7,
+      "name": "sản phẩm 7",
+      "price": 1721000,
+      "image": "./image/product_7.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "hammer"
+    },
+    {
+      "id": 8,
+      "name": "sản phẩm 8",
+      "price": 3550000,
+      "image": "./image/product_8.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "saw"
+    },
+    {
+      "id": 9,
+      "name": "sản phẩm 9",
+      "price": 7110000,
+      "image": "./image/product_9.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "hammer"
+    },
+    {
+      "id": 10,
+      "name": "sản phẩm 10",
+      "price": 750000,
+      "image": "./image/product_10.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "saw"
+    },
+    {
+      "id": 11,
+      "name": "sản phẩm 11",
+      "price": 4210000,
+      "image": "./image/product_11.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "saw"
+    },
+    {
+      "id": 12,
+      "name": "sản phẩm 12",
+      "price": 3450000,
+      "image": "./image/product_12.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "drill"
+    },
+    {
+      "id": 13,
+      "name": "sản phẩm 13",
+      "price": 7550000,
+      "image": "./image/product_13.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "drill"
+    },
+    {
+      "id": 14,
+      "name": "sản phẩm 14",
+      "price": 6550000,
+      "image": "./image/product_14.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "saw"
+    },
+    {
+      "id": 15,
+      "name": "sản phẩm 15",
+      "price": 5650000,
+      "image": "./image/product_15.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "hammer"
+    },
+    {
+      "id": 16,
+      "name": "sản phẩm 16",
+      "price": 2250000,
+      "image": "./image/product_16.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "saw"
+    },
+    {
+      "id": 17,
+      "name": "sản phẩm 17",
+      "price": 3150000,
+      "image": "./image/product_17.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "drill"
+    },
+    {
+      "id": 18,
+      "name": "sản phẩm 18",
+      "price": 1150000,
+      "image": "./image/product_18.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "hammer"
+    },
+    {
+      "id": 19,
+      "name": "sản phẩm 19",
+      "price": 8550000,
+      "image": "./image/product_19.jpg",
+      "votes": 0,
+      "countRate": 0,
+      "bought": 0,
+      "timeActive": 1,
+      "addNewDate": 1,
+      "category": "saw"
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Admin1",
+      "username": "admin",
+      "password": "admin",
+      "mail": "admin@gmail.com",
+      "phone": "0935985100",
+      "addrres": "Da Nang",
+      "role": 0
+    },
+    {
+      "name": "khiêm",
+      "mail": "khangnho2102",
+      "phone": "0935985100",
+      "addrres": "việt nam",
+      "username": "khiem",
+      "password": "123",
+      "id": 2,
+      "role": 1,
+      "cart": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ]
+    },
+    {
+      "name": "khiêm",
+      "mail": "khangnho2102",
+      "phone": "123",
+      "addrres": "142",
+      "username": "khiem1",
+      "password": "1",
+      "id": 3,
+      "role": 1,
+      "cart": []
+    },
+    {
+      "name": "Vy Vy",
+      "mail": "vy",
+      "phone": "12332",
+      "addrres": "khangnho21",
+      "username": "vy",
+      "password": "2",
+      "id": 4,
+      "role": 1,
+      "cart": []
+    },
+    {
+      "name": "abc",
+      "mail": "123",
+      "phone": "1234",
+      "addrres": "4213",
+      "username": "test",
+      "password": "3",
+      "id": 5,
+      "role": 1,
+      "cart": []
+    },
+    {
+      "name": "Khiêm",
+      "mail": "mail",
+      "phone": "0001",
+      "addrres": "việt nam",
+      "username": "hixhuhuac",
+      "password": "123",
+      "id": 6,
+      "role": 1,
+      "cart": []
+    },
+    {
+      "name": "a231",
+      "mail": "khangnho2102",
+      "phone": "0935985100",
+      "addrres": "việt nam",
+      "username": "testting",
+      "password": "123",
+      "id": 7,
+      "role": 1,
+      "cart": []
+    }
+  ]
+}
