@@ -16,7 +16,7 @@ const DetailPro = (props) => {
     <React.Fragment>
       <div className="product__detail">
         <div className="product__detail__img">
-          <img src={`http://localhost:3000/image/product_${item.id}.jpg`} className="img"></img>
+          <img src={`http://localhost:3000/${item.image}`} className="img"></img>
           <div className="product__detail__bonus">
             <img className="img" src={img__Arr.product2} />
             <img className="img" src={img__Arr.product3} />
