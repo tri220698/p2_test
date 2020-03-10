@@ -15,11 +15,6 @@ const Register = ({ history }) => {
   const [newUser, setNewUser] = useState(Object)
 
   useEffect(() => {
-    const GetData = async () => {
-      const dataUser = await getData('user')
-      setUserData(dataUser)
-    };
-    GetData()
   }, [dispatch])
 
 
@@ -29,9 +24,10 @@ const Register = ({ history }) => {
     setNewUser({ ...newUser, [name]: value });
   }
 
-  const handleRegis = e => {
+  const handleRegis = async (e) => {
     e.preventDefault();
-    const findUser = userData.find(v => v.username === newUser.username)
+    const dataUser = await getData('user')
+    const findUser = dataUser.find(v => v.username === newUser.username)
     if (!newUser.name || !newUser.mail || !newUser.phone || !newUser.addrres || !newUser.username || !newUser.password || !newUser.confirm) {
       alert(t('register.warning.fill'))
     }
@@ -47,11 +43,10 @@ const Register = ({ history }) => {
     else {
       alert(t('register.warning.success'))
       delete newUser.confirm
-      newUser.id = parseInt(Object.keys(userData).length + 1)
       newUser.role = 1
       newUser.cart = []
       setNewUser(newUser)
-      RegisUser(newUser)
+      const regis = await RegisUser(newUser)
       sessionStorage.setItem('userData', JSON.stringify(newUser))
       window.location.pathname = ('/')
     }

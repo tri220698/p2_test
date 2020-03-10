@@ -21,7 +21,7 @@ const New = (props) => {
         <div className="container">
           <div className="row">
             <div className="new__title">
-              <Tittle_part text={t('common.new"')} />
+              <Tittle_part text={t('common.new')} />
               <ListNew items={new_theme}></ListNew>
               <Togle></Togle>
             </div>

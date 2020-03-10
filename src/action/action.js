@@ -27,3 +27,9 @@ export const getProducts = (products)=>
     products
   }
 }
+export const getSort = (sort)=>{
+  return{
+    type:'SORT__BY',
+    sort
+  }
+}

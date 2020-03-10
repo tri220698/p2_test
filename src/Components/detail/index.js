@@ -10,9 +10,6 @@ import {getProduct} from '../../database/db'
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-
-
-
 const Detail = (props) => {
 
   const [product,setProduct] = useState(Object);
