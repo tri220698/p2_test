@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as img__Arr from '../../img/index'
 import { DropdownList } from 'react-widgets'
 import { useTranslation } from 'react-i18next';
 import { formatter } from '../mixin/mixin'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
+import { checkInclude } from '../mixin/mixin'
+import { addtoCart, UpdateDetailQuantity } from '../../action/action'
+import { updateUser } from '../../database/db'
+
 
 
 const DetailPro = (props) => {
@@ -10,7 +16,50 @@ const DetailPro = (props) => {
   const { item } = props
   const ListSize = ['Big', 'Normal', 'Small']
   const ListColor = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo blue', 'violet']
+  const [amount, setAmount] = useState(1)
   const { t } = useTranslation();
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
+  const cart = useSelector(state => state.cart)
+
+
+  const handleChange = (e) => {
+    const target = e.target;
+    const { name, value } = target;
+    setAmount(value);
+  }
+
+  const AddToCart = async (e, item) => {
+    if (JSON.parse(sessionStorage.getItem('userData'))) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        updateCart(item)
+      }
+      else if (!checkInclude(cart, item)) {
+        updateCart(item)
+      }
+      else {
+        user.cart = cart.map((pro) => pro.id === item.id ? { ...pro, quantity: parseInt(pro.quantity) + parseInt(amount) } : pro)
+        dispatch(UpdateDetailQuantity(item.id, amount))
+        sessionStorage.setItem('userData', JSON.stringify(user))
+        const add = await updateUser(user)
+        alert(t('Đã cập nhật vào giỏ hàng'))
+
+      }
+    }
+    else {
+      alert(t('Đăng nhập để mua ngay '))
+    }
+  }
+
+  const updateCart = async (item) => {
+    item.quantity = amount
+    user.cart = [...user.cart, item]
+    dispatch(addtoCart(item))
+    sessionStorage.setItem('userData', JSON.stringify(user))
+    const add = await updateUser(user)
+    alert(t('Đã thêm vào giỏ hàng'))
+  }
 
   return (
     <React.Fragment>
@@ -33,7 +82,7 @@ const DetailPro = (props) => {
             <i className="fa fa-star" />
             <i className="fa fa-star" />
             <i className="far fa-star" />
-            {12 +" ( "+ t('common.rate')+" )"}
+            {12 + " ( " + t('common.rate') + " )"}
             <span />
             <a href="#">{t('common.feedback')}</a>
           </p>
@@ -58,15 +107,18 @@ const DetailPro = (props) => {
           </div>
           <div className="info__count">
             <div className="count__input">
-              <input placeholder="1" type="number" min='1' />
+              <input value={amount} type="number" min='1' name="number"
+                onChange={handleChange} />
             </div>
             <div className="count__buy">
-              <a href="#">{t('button.buyNow')}</a>
+              <Link to="/login"
+                onClick={e => { AddToCart(e, item) }}
+              >{t('button.buyNow')}</Link>
             </div>
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </React.Fragment >
   )
 }
 export default DetailPro

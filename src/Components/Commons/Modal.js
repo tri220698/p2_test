@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import avatarUser from '../../img/admin-ui.svg';
 import { useTranslation } from 'react-i18next';
 import { updateUser } from '../../database/db';
+import {getUserData} from '../../action/action'
+import { useDispatch } from 'react-redux';
 
 function hideModal() {
   document.querySelector('.modal-box').style.transform = 'scale(0)';
@@ -25,6 +27,7 @@ const ModalBox = (props) => {
   const { t } = useTranslation();
   const [user, setUser] = useState(props.user)
   const [confirm, setConfirm] = useState(props.user.password);
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     const target = e.target;
@@ -42,6 +45,7 @@ const ModalBox = (props) => {
     }
     else {
       const update = await updateUser(user)
+      dispatch(getUserData(user))
       sessionStorage.setItem('userData', JSON.stringify(user))
       alert(t('register.warning.success'))
     }
@@ -62,8 +66,8 @@ const ModalBox = (props) => {
                 </div>
                 <form action="" onSubmit={submitHandler} className="modal-box-content-form-right">
                     <div className="modal-box-content-form-right__top">
-                        <h2>Profile</h2>
-                        <p>The information can be edited</p>
+                        <h2>{t('user.1')}</h2>
+                        <p>{t('user.2')}</p>
                     </div>
                     <hr/>
                     <div className="modal-box-content-form-right__content">

@@ -1,6 +1,8 @@
+import * as types from '../actionTypes/actionTypes'
+
 const user = (state = [], action) => {
   switch (action.type) {
-    case 'GET__USER__DATA' :
+    case types.GET__USER__DATA :
       return action.user
     default:
       return state

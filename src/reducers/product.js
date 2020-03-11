@@ -1,6 +1,8 @@
+import * as types from '../actionTypes/actionTypes'
+
 const products = (state = [], action) => {
   switch (action.type) {
-    case 'GET__PRODUCT' :
+    case types.GET__PRODUCT :
       return action.products
     default:
       return state

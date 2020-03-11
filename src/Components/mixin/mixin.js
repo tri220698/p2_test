@@ -158,3 +158,12 @@ export const formatter = new Intl.NumberFormat('it-IT', {
   currency: 'VND',
   minimumFractionDigits: 0
 })
+
+export const checkInclude = (data, item) => {
+  let bool = false
+  data.forEach(cartOnly => {
+    if (cartOnly.id === item.id)
+      bool = true
+  });
+  return bool
+}

@@ -1,0 +1,11 @@
+export const GET__USER__DATA = 'GET__USER__DATA'
+export const GET__USER__CART = 'GET__USER__CART'
+export const USER__EXIST = 'USER__EXIST'
+export const GET__PRODUCT = 'GET__PRODUCT'
+export const SORT__BY = 'SORT__BY'
+export const ADD__CART = 'ADD__CART'
+export const UPDATE__ONE__CART = 'UPDATE__ONE__CART'
+export const DELETE__CART = 'DELETE__CART'
+export const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
+export const UPDATE__DETAIL_QUANTITY = 'UPDATE__DETAIL_QUANTITY'
+

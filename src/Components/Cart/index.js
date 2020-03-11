@@ -5,9 +5,7 @@ import CartItem from './CartItem'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
-
-
-
+import { formatter } from '../mixin/mixin'
 
 const Cart = () => {
 
@@ -48,17 +46,17 @@ const Cart = () => {
                       <thead>
                         <tr>
                           <th>{t('cart.buy.1')}</th>
-                          <td>{t('6.850.000 Đ')}</td>
+                          <td>{formatter.format(Total(cart))}</td>
                         </tr>
                         <tr>
                           <th>{t('cart.buy.2')}</th>
-                          <td>{t('6850.000 Đ')}</td>
+                          <td>{formatter.format(Total(cart) / 10)}</td>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <th>{t('cart.buy.3')}</th>
-                          <td className="-red">{t('7.520.000 Đ')}</td>
+                          <td className="-red">{formatter.format(Total(cart) + Total(cart) / 10)}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -96,3 +94,11 @@ const Cart = () => {
 
 export default Cart
 
+
+const Total = (data) => {
+  let totalMoney = 0
+  data.map(item => {
+    totalMoney += (item.price * item.quantity)
+  })
+  return totalMoney
+}

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 const Lastest = (props) => {
 
   const { t } = useTranslation();
-  const { new_theme, items } = props
+  const { new_theme, items, add } = props
   const dispatch = useDispatch()
 
 
@@ -20,7 +20,7 @@ const Lastest = (props) => {
         <div className="container">
           <div className="row">
             <div className="title__last">
-            <Tittle_part text={t('common.lasest')} />
+              <Tittle_part text={t('common.lasest')} />
               <ListNew items={new_theme}></ListNew>
               <Togle></Togle>
             </div>
@@ -39,12 +39,13 @@ const Lastest = (props) => {
                     <i className="fa fa-star" />
                     <i className="fa fa-star" />
                     <i className="far fa-star" />
-                    {12 +" ( "+ t('common.rate')+" )"}
+                    {12 + " ( " + t('common.rate') + " )"}
                   </p>
                   <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...')}</p>
                   <h4 className="-price">{formatter.format(item.price)}</h4>
                   <div className="item__button">
-                    <a className="-left" href="#">{t('button.buyNow')}</a>
+                    <Link className="-left" to="/login" onClick={(e) => { add(e, item) }
+                    }>{t('button.buyNow')}</Link>
                     <Link className="-right" to={"/detail/" + item.id} >{t('button.detail')}</Link>
                   </div>
                 </div>

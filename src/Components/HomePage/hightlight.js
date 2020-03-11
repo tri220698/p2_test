@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 const HightLight = (props, { history }) => {
 
   const { t } = useTranslation();
-  const { products } = props
+  const { products, add } = props
   const dispatch = useDispatch()
 
   return (
@@ -43,11 +43,12 @@ const HightLight = (props, { history }) => {
                           <i className="fa fa-star" />
                           <i className="far fa-star" />
                           <br />
-                          {12 +" ( "+ t('common.rate')+" )"}
+                          {12 + " ( " + t('common.rate') + " )"}
                         </p>
                       </div>
                       <div className="item__button">
-                        <a className="-left" href="#">{t('button.buyNow')}</a>
+                        <Link className="-left" to="/login" onClick={(e) => { add(e, item) }
+                        }>{t('button.buyNow')}</Link>
                         <Link className="-right" to={"/detail/" + item.id} >{t('button.detail')}</Link>
                       </div>
                     </div >
