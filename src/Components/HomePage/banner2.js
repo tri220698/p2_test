@@ -16,7 +16,7 @@ const SecondBanner = () => {
               <img className="img" src={img__Arr.banner3} />
             </div>
             <div className="banner__text">
-              <h3>{t('ROCKET WOKARU')}</h3>
+              <h3>{t('banner.2')}</h3>
               <p>
                 {t('banner.1')}
             </p>

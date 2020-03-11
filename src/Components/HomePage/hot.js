@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 const Hot = (props) => {
 
   const { t } = useTranslation();
-  const { new_theme, items } = props
+  const { new_theme, items, add } = props
   const dispatch = useDispatch()
 
   return (
@@ -39,11 +39,12 @@ const Hot = (props) => {
                     <i className="fa fa-star" />
                     <i className="far fa-star" />
                     <br />
-                    {12 +" ( "+ t('common.rate')+" )"}
+                    {12 + " ( " + t('common.rate') + " )"}
                   </p>
                 </div>
                 <div className="item__button">
-                  <a className="-left" href="#">{t('button.buyNow')}</a>
+                  <Link className="-left" to="/login" onClick={(e) => { add(e, item) }
+                  }>{t('button.buyNow')}</Link>
                   <Link className="-right" to={"/detail/" + item.id} >{t('button.detail')}</Link>
                 </div>
               </div >
