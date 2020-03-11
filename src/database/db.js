@@ -24,3 +24,11 @@ export const getProduct = (id) => {
     })
     .catch(error => console.log(error))
 }
+
+export const updateUser = (user) => {
+  return axios.put(`http://localhost:2020/user/${user.id}`,user)
+    .then(res => {
+      return res.data
+    })
+    .catch(error => console.log(error))
+}
