@@ -167,3 +167,26 @@ export const checkInclude = (data, item) => {
   });
   return bool
 }
+
+export const displayStar = (countRate) => {
+  if(countRate > 0) {
+    let element = []
+    for(let i = 1 ; i <= countRate ; i++) {
+      element.push(<i key={i} className="fa fa-star"/>)
+    }
+    for(let i = 1 ; i <= (5 - countRate) ; i++) {
+      element.push(<i key={countRate+i} className="far fa-star"/>)
+    }
+    return element;
+  }else {
+    return (
+      <React.Fragment>
+        <i className="far fa-star"/>
+        <i className="far fa-star"/>
+        <i className="far fa-star"/>
+        <i className="far fa-star"/>
+        <i className="far fa-star"/>
+      </React.Fragment>
+    );
+  }
+}

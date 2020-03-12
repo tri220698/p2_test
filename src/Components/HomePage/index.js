@@ -15,7 +15,7 @@ import { addtoCart, updateOneCart, getUserCart } from '../../action/action'
 import { useTranslation } from 'react-i18next';
 import { checkInclude } from '../mixin/mixin'
 
-
+export const localUrl = window.location.protocol+"//"+window.location.host;
 
 const HomePage = () => {
 

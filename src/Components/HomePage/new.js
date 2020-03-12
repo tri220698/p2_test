@@ -1,10 +1,11 @@
 import React from 'react';
-import { Tittle_part, Togle, ListNew, formatter } from '../mixin/mixin'
+import { Tittle_part, Togle, ListNew, formatter, displayStar } from '../mixin/mixin'
 import * as img__Arr from '../../img/index'
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { getProducts } from '../../action/action'
 import { Link } from 'react-router-dom'
+import { localUrl } from '.';
 
 
 
@@ -37,19 +38,15 @@ const New = (props) => {
                     <h4 className="-price">{formatter.format(item.price)}</h4>
                     <h4>{item.name}</h4>
                     <p>
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-                      <i className="fa fa-star" />
-                      <i className="far fa-star" />
+                      {displayStar(Math.round(item.countRate/item.votes))}
                       <br />
-                      {12 + " ( " + t('common.rate') + " )"}
+                      {item.votes + " ( " + t('common.rate') + " )"}
                     </p>
                   </div>
                   <div className="item__button">
                     <Link className="-left" to="/login" onClick={(e) => { add(e, item) }
                     }>{t('button.buyNow')}</Link>
-                    <Link className="-right" to={"/detail/" + item.id} >{t('button.detail')}</Link>
+                    <a className="-right" href={localUrl+"/detail/"+item.id} >{t('button.detail')}</a>
                   </div>
                 </div >
               ))}

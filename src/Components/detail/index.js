@@ -15,10 +15,10 @@ const Detail = (props) => {
   const [product,setProduct] = useState(Object);
   const dispatch = useDispatch()
   const { t } = useTranslation();
+  const id = props.match.params.id;
 
 
   useEffect(() => {
-    const id = props.match.params.id;
     const GetProduct = async () => {
       const pro = await getProduct(id)
       setProduct(pro)
@@ -39,7 +39,7 @@ const Detail = (props) => {
               </div>
               <div className="right__item">
                 <DetailPro item={product} />
-                <Tag />
+                <Tag id={id}/>
                 <div className="product__same">
                   <div className="same__title">
                     <Tittle_part text={t('common.same')} />

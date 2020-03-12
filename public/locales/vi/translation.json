@@ -52,7 +52,8 @@
       "5": "thanh toán"
     },
     "warning": {
-      "1": "Hãy đăng nhập để xem giỏ hàng của mình"
+      "1": "Hãy đăng nhập để xem giỏ hàng của mình",
+      "2": "Đã xóa sản phẩm ra khỏi giỏ hàng"
     }
   },
   "footer": {
@@ -158,7 +159,13 @@
     "size":"--Chọn Size--",
     "color":"--Chọn Màu--",
     "info": "THÔNG TIN SẢN PHẨM",
-    "cmt": "ĐÁNH GIÁ - NHẬN XÉT"
+    "cmt": "ĐÁNH GIÁ - NHẬN XÉT",
+    "content": "Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus.",
+    "update": "Đã cập nhật vào giỏ hàng",
+    "warning": "Đăng nhập để thực hiện thao tác này",
+    "addCart": "Đã thêm vào giỏ hàng",
+    "feedback": "Bạn cần phải chọn số sao mình muốn đánh giá",
+    "popup": "Gửi đánh giá thành công"
 
   },
   "banner":{
