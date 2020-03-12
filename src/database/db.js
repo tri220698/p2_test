@@ -42,3 +42,20 @@ export const updateProduct = (product) => {
     })
     .catch(error => console.log(error))
 }
+
+export const updateHistory = (history) => {
+  axios.post(`http://localhost:2020/carts`, history)
+   .then(res => {
+     console.log(res)
+   })
+   .catch(error => console.log(error))
+}
+
+export const updatePro = (product) => {
+ return axios.put(`http://localhost:2020/products/${product.id}`, product)
+   .then(res => {
+     console.log(res)
+   })
+   .catch(error => console.log(error))
+
+}

@@ -15,6 +15,8 @@ const cart = (state = [], action) => {
       return state.map((item) => item.id === action.id ? { ...item, quantity: action.value } : item)
     case types.UPDATE__DETAIL_QUANTITY:
       return state.map((item) => item.id === action.id ? { ...item, quantity: parseInt(item.quantity) + parseInt(action.value) } : item)
+    case types.REMOVE__CART:
+      return []
     default:
       return state
   }
