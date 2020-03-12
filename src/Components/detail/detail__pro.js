@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { checkInclude } from '../mixin/mixin'
 import { addtoCart, UpdateDetailQuantity } from '../../action/action'
-import { updateUser } from '../../database/db'
+import { updateUser, updateProduct } from '../../database/db'
 
-
+const url = window.location.protocol+"//"+window.location.host;
 
 const DetailPro = (props) => {
 
@@ -21,6 +21,7 @@ const DetailPro = (props) => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
+  const [rate, setRate] = useState(0);
 
 
   const handleChange = (e) => {
@@ -43,12 +44,12 @@ const DetailPro = (props) => {
         dispatch(UpdateDetailQuantity(item.id, amount))
         sessionStorage.setItem('userData', JSON.stringify(user))
         const add = await updateUser(user)
-        alert(t('Đã cập nhật vào giỏ hàng'))
+        alert(t('detail.update'))
 
       }
     }
     else {
-      alert(t('Đăng nhập để mua ngay '))
+      alert(t('detail.warning'))
     }
   }
 
@@ -58,14 +59,66 @@ const DetailPro = (props) => {
     dispatch(addtoCart(item))
     sessionStorage.setItem('userData', JSON.stringify(user))
     const add = await updateUser(user)
-    alert(t('Đã thêm vào giỏ hàng'))
+    alert(t('detail.addCart'))
+  }
+
+  const rateHandler = (index) => { 
+    for(let i = 1;  i<= 5 ; i++) {
+      document.querySelector(`.star i:nth-child(${i})`).className = "far fa-star";
+    }   
+    for(let i = 1;  i<= index ; i++) {
+      document.querySelector(`.star i:nth-child(${i})`).className = "fa fa-star";
+    }
+    setRate(index);
+  }
+
+  const submitFeedback = async (e) => {
+    e.preventDefault();
+    if (JSON.parse(sessionStorage.getItem('userData'))) {
+      if(rate === 0) {
+        alert(t('detail.feedback'))
+      }else {
+        let newProduct = {...item};
+        newProduct.countRate += rate;
+        newProduct.votes += 1;
+        await updateProduct(newProduct);
+        alert(t('detail.popup'));
+        window.location.reload();
+      }
+    } else {
+      alert(t('detail.warning'))
+      window.location.href = url+"/login";
+    }  
+  }
+
+  const displayStar = (countRate) => {
+    if(countRate > 0) {
+      let element = []
+      for(let i = 1 ; i <= countRate ; i++) {
+        element.push(<i key={i} className="fa fa-star" onClick={() => rateHandler(i)}/>)
+      }
+      for(let i = 1 ; i <= (5 - countRate) ; i++) {
+        element.push(<i key={countRate+i} className="far fa-star" onClick={() => rateHandler(countRate+i)}/>)
+      }
+      return element;
+    }else {
+      return (
+        <React.Fragment>
+          <i className="far fa-star" onClick={() => rateHandler(1)}/>
+          <i className="far fa-star" onClick={() => rateHandler(2)}/>
+          <i className="far fa-star" onClick={() => rateHandler(3)}/>
+          <i className="far fa-star" onClick={() => rateHandler(4)}/>
+          <i className="far fa-star" onClick={() => rateHandler(5)}/>
+        </React.Fragment>
+      );
+    }
   }
 
   return (
     <React.Fragment>
       <div className="product__detail">
         <div className="product__detail__img">
-          <img src={`http://localhost:3000/${item.image}`} className="img"></img>
+          <img src={`${url}/${item.image}`} className="img"></img>
           <div className="product__detail__bonus">
             <img className="img" src={img__Arr.product2} />
             <img className="img" src={img__Arr.product3} />
@@ -77,19 +130,15 @@ const DetailPro = (props) => {
         <div className="product__detail__info">
           <h3>{item.name}</h3>
           <p className="star">
-            <i className="fa fa-star" />
-            <i className="fa fa-star" />
-            <i className="fa fa-star" />
-            <i className="fa fa-star" />
-            <i className="far fa-star" />
-            {12 + " ( " + t('common.rate') + " )"}
+            {displayStar(Math.round(item.countRate/item.votes))}
+            {item.votes + " ( " + t('common.rate') + " )"}
             <span />
-            <a href="#">{t('common.feedback')}</a>
+            <a href="#" onClick={submitFeedback}>{t('common.feedback')}</a>
           </p>
           <h4>{formatter.format(item.price)}</h4>
           <h5>{t('detail.infoDetail')}</h5>
           <p>
-            {t('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercition ullamco laboris nisi ut aliquip ex ea commodo consequat...')}
+            {t('detail.content')}
           </p>
           <div className="info__dropdown">
             <div className="dropdown__item">
@@ -115,6 +164,7 @@ const DetailPro = (props) => {
                 onClick={e => { AddToCart(e, item) }}
               >{t('button.buyNow')}</Link>
             </div>
+            <div className="fb-share-button" data-href={url+"/detail/"+item.id} data-layout="box_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fdetail%2F5&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Chia sẻ</a></div>
           </div>
         </div>
       </div>

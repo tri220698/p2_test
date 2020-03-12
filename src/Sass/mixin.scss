@@ -106,15 +106,18 @@
 
 @mixin rate__star(){
   padding: 5px;
-    font-size: 12px;
-    color: $color_list;
-    i {
-      color: $color_or;
-      &.-white {
-        border-color: $color_or;
-        color: $color_white;
-      }
+  font-size: 12px;
+  color: $color_list;
+  padding-left: 0;
+  i {
+    color: $color_or;
+    padding: 0 1px;
+    &.-white {
+      border-color: $color_or;
+      color: $color_white;
     }
+    cursor: pointer;
+  }
 }
 @mixin footer_page(){
   display: inline-block;

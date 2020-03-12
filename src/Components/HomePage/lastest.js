@@ -1,10 +1,11 @@
 import React from 'react';
-import { Tittle_part, Togle, ListNew, formatter } from '../mixin/mixin'
+import { Tittle_part, Togle, ListNew, formatter, displayStar } from '../mixin/mixin'
 import * as img__Arr from '../../img/index'
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { getProducts } from '../../action/action'
 import { Link } from 'react-router-dom'
+import { localUrl } from '.';
 
 
 const Lastest = (props) => {
@@ -34,19 +35,15 @@ const Lastest = (props) => {
                 <div className="text__last">
                   <h4>{item.name}</h4>
                   <p>
-                    <i className="fa fa-star" />
-                    <i className="fa fa-star" />
-                    <i className="fa fa-star" />
-                    <i className="fa fa-star" />
-                    <i className="far fa-star" />
-                    {12 + " ( " + t('common.rate') + " )"}
+                    {displayStar(Math.round(item.countRate/item.votes))}
+                    {item.votes + " ( " + t('common.rate') + " )"}
                   </p>
                   <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...')}</p>
                   <h4 className="-price">{formatter.format(item.price)}</h4>
                   <div className="item__button">
                     <Link className="-left" to="/login" onClick={(e) => { add(e, item) }
                     }>{t('button.buyNow')}</Link>
-                    <Link className="-right" to={"/detail/" + item.id} >{t('button.detail')}</Link>
+                    <a className="-right" href={localUrl+"/detail/"+item.id} >{t('button.detail')}</a>
                   </div>
                 </div>
               </div>

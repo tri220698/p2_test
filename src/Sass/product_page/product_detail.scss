@@ -104,6 +104,9 @@
           text-align: center;
         }
       }
+      .fb-share-button {
+        margin-left: 10px;
+      }
     }
     .info__social {
       a {
@@ -158,9 +161,6 @@
     font-size: $font_13;
     margin: 14px 0;
     @include border(1px,$color_list);
-    p {
-      @extend %pb-1;
-    }
   }
 }
 
