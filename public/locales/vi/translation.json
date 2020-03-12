@@ -175,7 +175,12 @@
   },
   "user": {
     "1": "Profile",
-    "2": "The information can be edited"
+    "2": "The information can be edited",
+    "3": "Lịch sử giỏ hàng",
+    "stt": "Order Ref",
+    "date": "Date",
+    "total": "Total",
+    "status": "Status"
   },
   "order": {
     "1": "Bạn xác nhận mua ",

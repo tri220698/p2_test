@@ -44,7 +44,7 @@ export const updateProduct = (product) => {
 }
 
 export const updateHistory = (history) => {
-  axios.post(`http://localhost:2020/carts`, history)
+  axios.post(`${url}/carts`, history)
    .then(res => {
      console.log(res)
    })
@@ -52,10 +52,17 @@ export const updateHistory = (history) => {
 }
 
 export const updatePro = (product) => {
- return axios.put(`http://localhost:2020/products/${product.id}`, product)
+ return axios.put(`${url}/products/${product.id}`, product)
    .then(res => {
      console.log(res)
    })
    .catch(error => console.log(error))
+}
 
+export const getCartsByUser = (username) => {
+  return axios.get(`${url}/carts?username=${username}`)
+    .then(res => {
+      return res.data
+    })
+    .catch(error => console.log(error))
 }
