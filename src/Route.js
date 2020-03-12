@@ -6,7 +6,8 @@ import Detail from './Components/detail/index'
 import Cart from './Components/Cart/index'
 import Login from './Components/Login/index'
 import Register from './Components/Register/index'
-
+import Order from './Components/Cart/Order'
+import Confirm from './Components/Cart/confirm'
 
 const Routers = () => {
   return (
@@ -17,6 +18,8 @@ const Routers = () => {
       <Route path="/cart" component={Cart}/>
       <Route path="/login" component={Login}/>
       <Route path="/register" component={Register}/>
+      <Route path="/order" component={Order}/>
+      <Route path="/confirm" component={Confirm}/>
     </Switch>
   )
 }

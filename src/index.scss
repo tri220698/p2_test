@@ -41,3 +41,25 @@ input.-left {
   max-width: 120.53px;
 }
 
+.share {
+  margin-left: 5px;
+}
+
+.confirm__text{
+  flex: 0 0 100%;
+  text-align: center;
+  @extend %p-col-1;
+  h4{
+    font-size: 30px;
+    font-weight: 600;
+    color: #f5bd10;
+    @extend %p-col-1;
+  }
+  h5{
+    font-size: 20px;
+    font-weight: 500;
+    span{
+      color: red;
+    }
+  }
+}

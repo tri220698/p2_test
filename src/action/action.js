@@ -70,3 +70,17 @@ export const UpdateDetailQuantity =(id,value)=>{
     value
   }
 }
+
+
+export const getOrder = (Bool)=>{
+  return{
+    type: types.GET__ORDER,
+    Bool
+  }
+}
+
+export const removeCart = ()=>{
+  return {
+    type : types.REMOVE__CART
+  }
+}

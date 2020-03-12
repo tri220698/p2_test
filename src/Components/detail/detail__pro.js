@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom'
 import { checkInclude } from '../mixin/mixin'
 import { addtoCart, UpdateDetailQuantity } from '../../action/action'
 import { updateUser, updateProduct } from '../../database/db'
+import { FacebookShareButton, FacebookIcon } from 'react-share'
 
-const url = window.location.protocol+"//"+window.location.host;
+const url = window.location.protocol + "//" + window.location.host;
 
 const DetailPro = (props) => {
 
@@ -62,11 +63,11 @@ const DetailPro = (props) => {
     alert(t('detail.addCart'))
   }
 
-  const rateHandler = (index) => { 
-    for(let i = 1;  i<= 5 ; i++) {
+  const rateHandler = (index) => {
+    for (let i = 1; i <= 5; i++) {
       document.querySelector(`.star i:nth-child(${i})`).className = "far fa-star";
-    }   
-    for(let i = 1;  i<= index ; i++) {
+    }
+    for (let i = 1; i <= index; i++) {
       document.querySelector(`.star i:nth-child(${i})`).className = "fa fa-star";
     }
     setRate(index);
@@ -75,10 +76,10 @@ const DetailPro = (props) => {
   const submitFeedback = async (e) => {
     e.preventDefault();
     if (JSON.parse(sessionStorage.getItem('userData'))) {
-      if(rate === 0) {
+      if (rate === 0) {
         alert(t('detail.feedback'))
-      }else {
-        let newProduct = {...item};
+      } else {
+        let newProduct = { ...item };
         newProduct.countRate += rate;
         newProduct.votes += 1;
         await updateProduct(newProduct);
@@ -87,28 +88,28 @@ const DetailPro = (props) => {
       }
     } else {
       alert(t('detail.warning'))
-      window.location.href = url+"/login";
-    }  
+      window.location.href = url + "/login";
+    }
   }
 
   const displayStar = (countRate) => {
-    if(countRate > 0) {
+    if (countRate > 0) {
       let element = []
-      for(let i = 1 ; i <= countRate ; i++) {
-        element.push(<i key={i} className="fa fa-star" onClick={() => rateHandler(i)}/>)
+      for (let i = 1; i <= countRate; i++) {
+        element.push(<i key={i} className="fa fa-star" onClick={() => rateHandler(i)} />)
       }
-      for(let i = 1 ; i <= (5 - countRate) ; i++) {
-        element.push(<i key={countRate+i} className="far fa-star" onClick={() => rateHandler(countRate+i)}/>)
+      for (let i = 1; i <= (5 - countRate); i++) {
+        element.push(<i key={countRate + i} className="far fa-star" onClick={() => rateHandler(countRate + i)} />)
       }
       return element;
-    }else {
+    } else {
       return (
         <React.Fragment>
-          <i className="far fa-star" onClick={() => rateHandler(1)}/>
-          <i className="far fa-star" onClick={() => rateHandler(2)}/>
-          <i className="far fa-star" onClick={() => rateHandler(3)}/>
-          <i className="far fa-star" onClick={() => rateHandler(4)}/>
-          <i className="far fa-star" onClick={() => rateHandler(5)}/>
+          <i className="far fa-star" onClick={() => rateHandler(1)} />
+          <i className="far fa-star" onClick={() => rateHandler(2)} />
+          <i className="far fa-star" onClick={() => rateHandler(3)} />
+          <i className="far fa-star" onClick={() => rateHandler(4)} />
+          <i className="far fa-star" onClick={() => rateHandler(5)} />
         </React.Fragment>
       );
     }
@@ -130,7 +131,7 @@ const DetailPro = (props) => {
         <div className="product__detail__info">
           <h3>{item.name}</h3>
           <p className="star">
-            {displayStar(Math.round(item.countRate/item.votes))}
+            {displayStar(Math.round(item.countRate / item.votes))}
             {item.votes + " ( " + t('common.rate') + " )"}
             <span />
             <a href="#" onClick={submitFeedback}>{t('common.feedback')}</a>
@@ -164,7 +165,9 @@ const DetailPro = (props) => {
                 onClick={e => { AddToCart(e, item) }}
               >{t('button.buyNow')}</Link>
             </div>
-            <div className="fb-share-button" data-href={url+"/detail/"+item.id} data-layout="box_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fdetail%2F5&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+            <div className="share">
+              <FacebookShareButton url={url + `/detail/${item.id}`}><FacebookIcon size={39}/></FacebookShareButton>
+            </div>
           </div>
         </div>
       </div>

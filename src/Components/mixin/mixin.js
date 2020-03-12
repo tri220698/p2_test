@@ -190,3 +190,20 @@ export const displayStar = (countRate) => {
     );
   }
 }
+
+
+export const TotalMoney = (data) => {
+  let totalMoney = 0
+  data.map(item => {
+    totalMoney += (item.price * item.quantity)
+  })
+  return totalMoney
+}
+
+export const TotalQuan = (data) => {
+  let totalQuantity = 0
+  data.map(item => {
+    totalQuantity += parseInt(item.quantity)
+  })
+  return totalQuantity
+}

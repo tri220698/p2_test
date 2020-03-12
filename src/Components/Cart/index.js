@@ -5,14 +5,22 @@ import CartItem from './CartItem'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
-import { formatter } from '../mixin/mixin'
+import { formatter, TotalMoney } from '../mixin/mixin'
+import { getOrder } from '../../action/action'
+
 
 const Cart = () => {
 
   const SaveUser = JSON.parse(sessionStorage.getItem('userData'))
   const cart = useSelector(state => state.cart)
   const { t } = useTranslation();
+  const dispatch = useDispatch()
 
+
+  const handleOrder = () => {
+    dispatch(getOrder(true))
+    sessionStorage.setItem('order', true)
+  }
 
   if (SaveUser) {
     if (cart.length === 0) {
@@ -46,17 +54,17 @@ const Cart = () => {
                       <thead>
                         <tr>
                           <th>{t('cart.buy.1')}</th>
-                          <td>{formatter.format(Total(cart))}</td>
+                          <td>{formatter.format(TotalMoney(cart))}</td>
                         </tr>
                         <tr>
                           <th>{t('cart.buy.2')}</th>
-                          <td>{formatter.format(Total(cart) / 10)}</td>
+                          <td>{formatter.format(TotalMoney(cart) / 10)}</td>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <th>{t('cart.buy.3')}</th>
-                          <td className="-red">{formatter.format(Total(cart) + Total(cart) / 10)}</td>
+                          <td className="-red">{formatter.format(TotalMoney(cart) + TotalMoney(cart) / 10)}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -64,7 +72,7 @@ const Cart = () => {
                   <div className="cart__button">
                     <div className="item__button">
                       <Link className="-right" to="/">{t('cart.buy.4')}</Link>
-                      <a className="-left" href="#">{t('cart.buy.5')}</a>
+                      <Link className="-left" to="/order" onClick={handleOrder}>{t('cart.buy.5')}</Link>
                     </div>
                   </div>
                 </div>
@@ -94,11 +102,3 @@ const Cart = () => {
 
 export default Cart
 
-
-const Total = (data) => {
-  let totalMoney = 0
-  data.map(item => {
-    totalMoney += (item.price * item.quantity)
-  })
-  return totalMoney
-}
