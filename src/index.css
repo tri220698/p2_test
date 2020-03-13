@@ -2,7 +2,7 @@
   padding: 2rem 0;
 }
 
-.slider__file .slider__text .text__check, .pop-up .pop-up__text .pop-up__info, .main__blog .list__blog .list__blog__text .post-by, .main__blog .list__blog .list__blog__text h3, .blog__detail__chat .blog__detail__comment .comment__content .day-post, .main__list .right__item .product__last, .product__detail .product__detail__info .info__count, .product__detail .product__detail__info .info__dropdown, .product__detail .product__detail__img .product__detail__bonus {
+.confirm__text h4, .confirm__text, .slider__file .slider__text .text__check, .pop-up .pop-up__text .pop-up__info, .main__blog .list__blog .list__blog__text .post-by, .main__blog .list__blog .list__blog__text h3, .blog__detail__chat .blog__detail__comment .comment__content .day-post, .main__list .right__item .product__last, .product__detail .product__detail__info .info__count, .product__detail .product__detail__info .info__dropdown, .product__detail .product__detail__img .product__detail__bonus {
   padding: 1rem 0;
 }
 
@@ -447,37 +447,61 @@ header .menu__user ul li:hover a {
 }
 .modal-box-content-form {
   width: 90%;
-  height: 100%;
+  height: 500px;
   margin: 20px auto;
   display: flex;
   box-sizing: border-box;
+  min-height: 400px;
+  overflow-y: auto;
 }
 .modal-box-content-form-left {
   width: 35%;
-  height: 150px;
+}
+.modal-box-content-form-left-block {
+  width: 100%;
+  height: auto;
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.04);
-  display: flex;
   border-radius: 8px;
-  padding-top: 30px;
   overflow: hidden;
+  margin-bottom: 20px;
 }
-.modal-box-content-form-left__infor {
+.modal-box-content-form-left-block__tab {
+  display: block;
+  padding: 10px 30px 10px 30px;
+  font-size: 20px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.modal-box-content-form-left-block__tab.-active {
+  background-color: grey;
+  color: white;
+}
+.modal-box-content-form-left-block__tab:hover {
+  background-color: grey;
+  color: white;
+}
+.modal-box-content-form-left-block__infor {
   margin-left: 30px;
   width: 100px;
+  float: left;
+  margin-top: 30px;
+  padding-bottom: 30px;
 }
-.modal-box-content-form-left__infor p {
+.modal-box-content-form-left-block__infor p {
   color: grey;
   margin-top: 10px;
 }
-.modal-box-content-form-left__avatar {
+.modal-box-content-form-left-block__avatar {
   width: 100px;
   height: 100px;
   overflow: hidden;
   margin-left: auto;
   margin-right: 30px;
+  margin-top: 30px;
+  float: right;
 }
-.modal-box-content-form-left__avatar img {
+.modal-box-content-form-left-block__avatar img {
   width: 100%;
   height: 100%;
 }
@@ -489,6 +513,58 @@ header .menu__user ul li:hover a {
   border-radius: 8px;
   padding-top: 30px;
   margin-left: auto;
+}
+.modal-box-content-form-right.-form {
+  display: block;
+}
+.modal-box-content-form-right.-table {
+  border-spacing: 0;
+  padding-top: 10px;
+  display: none;
+}
+.modal-box-content-form-right.-table tr {
+  font-size: 20px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+.modal-box-content-form-right.-table tr:hover {
+  background-color: #fff;
+}
+.modal-box-content-form-right.-table tr:first-child:hover {
+  background-color: transparent;
+}
+.modal-box-content-form-right.-table tr th {
+  color: black;
+  font-weight: bold;
+  padding: 10px 0;
+  border-bottom: 1px solid grey;
+  border-right: none;
+  border-left: none;
+}
+.modal-box-content-form-right.-table tr td {
+  text-align: center;
+  color: black;
+  padding: 10px 0;
+}
+.modal-box-content-form-right.-table tr td:last-child::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.modal-box-content-form-right.-table tr td:last-child.-cancelled::before {
+  background-color: red;
+  animation: zoomCancel 1s ease infinite;
+}
+.modal-box-content-form-right.-table tr td:last-child.-delivered::before {
+  background-color: green;
+  animation: zoomDeli 1s ease infinite;
+}
+.modal-box-content-form-right.-table tr td:last-child.-pending::before {
+  background-color: blue;
+  animation: zoomPend 1s ease infinite;
 }
 .modal-box-content-form-right hr {
   background: #c0bdbd;
@@ -597,6 +673,48 @@ header .menu__user ul li:hover a {
   background-color: #121f6b;
 }
 
+@keyframes zoomCancel {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  35% {
+    box-shadow: 0 0 8px 6px lightcoral;
+  }
+  70% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  100% {
+    box-shadow: 0 0 8px 6px lightcoral;
+  }
+}
+@keyframes zoomDeli {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  35% {
+    box-shadow: 0 0 8px 6px greenyellow;
+  }
+  70% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  100% {
+    box-shadow: 0 0 8px 6px greenyellow;
+  }
+}
+@keyframes zoomPend {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  35% {
+    box-shadow: 0 0 8px 6px lightblue;
+  }
+  70% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  100% {
+    box-shadow: 0 0 8px 6px lightblue;
+  }
+}
 .title__text {
   margin: auto 0;
 }
@@ -3190,6 +3308,27 @@ input.-left {
   max-height: 50px;
   font-size: 12px;
   max-width: 120.53px;
+}
+
+.share {
+  margin-left: 5px;
+}
+
+.confirm__text {
+  flex: 0 0 100%;
+  text-align: center;
+}
+.confirm__text h4 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #f5bd10;
+}
+.confirm__text h5 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.confirm__text h5 span {
+  color: red;
 }
 
 /*# sourceMappingURL=index.css.map */
