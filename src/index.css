@@ -447,12 +447,10 @@ header .menu__user ul li:hover a {
 }
 .modal-box-content-form {
   width: 90%;
-  height: 500px;
   margin: 20px auto;
   display: flex;
   box-sizing: border-box;
   min-height: 400px;
-  overflow-y: auto;
 }
 .modal-box-content-form-left {
   width: 35%;
@@ -517,10 +515,18 @@ header .menu__user ul li:hover a {
 .modal-box-content-form-right.-form {
   display: block;
 }
+.modal-box-content-form-right .scroll-table {
+  max-height: 500px;
+  overflow: auto;
+}
 .modal-box-content-form-right.-table {
+  display: none;
+}
+.modal-box-content-form-right.-table table {
   border-spacing: 0;
   padding-top: 10px;
-  display: none;
+  padding: 0 1rem;
+  width: 100%;
 }
 .modal-box-content-form-right.-table tr {
   font-size: 20px;
@@ -544,7 +550,7 @@ header .menu__user ul li:hover a {
 .modal-box-content-form-right.-table tr td {
   text-align: center;
   color: black;
-  padding: 10px 0;
+  padding: 10px 2px;
 }
 .modal-box-content-form-right.-table tr td:last-child::before {
   content: "";

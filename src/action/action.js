@@ -84,3 +84,10 @@ export const removeCart = ()=>{
     type : types.REMOVE__CART
   }
 }
+
+export const getCate = (cate) => {
+  return {
+    type: types.GET__CATE,
+    cate
+  }
+}

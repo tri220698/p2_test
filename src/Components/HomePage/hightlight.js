@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Tittle_part, Togle, ListTheme, formatter, displayStar } from '../mixin/mixin'
 import { item_theme } from '../../database/datatext'
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { localUrl } from '.';
+import { ProductItem } from '../mixin/mixin'
+
 
 const HightLight = (props, { history }) => {
 
@@ -29,27 +29,7 @@ const HightLight = (props, { history }) => {
               </div>
               <div className="right__item">
                 <div className="list__product">
-                  {products.map((item, index) => (
-                    < div className="product__item" key={index}>
-                      <div className="item__img">
-                        <img src={process.env.PUBLIC_URL + item.image} alt="logo" className="img"></img>
-                      </div>
-                      <div className="item__info">
-                        <h4 className="-price">{formatter.format(item.price)}</h4>
-                        <h4>{item.name}</h4>
-                        <p>
-                          {displayStar(Math.round(item.countRate/item.votes))}
-                          <br />
-                          {item.votes + " ( " + t('common.rate') + " )"}
-                        </p>
-                      </div>
-                      <div className="item__button">
-                        <Link className="-left" to="/login" onClick={(e) => { add(e, item) }
-                        }>{t('button.buyNow')}</Link>
-                        <a className="-right" href={localUrl+"/detail/"+item.id} >{t('button.detail')}</a>
-                      </div>
-                    </div >
-                  ))}
+                  <ProductItem items={products} add={add} />
                 </div>
               </div>
             </div>

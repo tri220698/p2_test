@@ -6,25 +6,41 @@ import Tag from './tag'
 import { Tittle_part, Togle } from '../mixin/mixin'
 import { list_item, list_img } from '../../database/datatext'
 import { useSelector } from 'react-redux';
-import {getProduct} from '../../database/db'
+import { getProduct ,getData } from '../../database/db'
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import SameItem from './SameItem'
 
 const Detail = (props) => {
 
-  const [product,setProduct] = useState(Object);
+  const [product, setProduct] = useState(Object);
   const dispatch = useDispatch()
   const { t } = useTranslation();
   const id = props.match.params.id;
+  const [same, setSame] = useState(Object)
+  const [Bool, setBool] = useState(false)
 
 
   useEffect(() => {
     const GetProduct = async () => {
       const pro = await getProduct(id)
-      setProduct(pro)
+      await setProduct(pro)
+      const GetData = async () => {
+        const get = await getData(`products`)
+        setSame(sameProduct(get, pro))
+        setBool(true)
+      }
+      GetData()
     }
+
     GetProduct()
-  },[dispatch])
+
+  }, [dispatch])
+
+  const sameProduct = (items, pro) => {
+    console.log(pro.category)
+    return (items.filter((item) => pro.category === item.category && pro.id !== item.id)).slice(0, 3)
+  }
 
   if (product) {
     return (
@@ -39,11 +55,12 @@ const Detail = (props) => {
               </div>
               <div className="right__item">
                 <DetailPro item={product} />
-                <Tag id={id}/>
+                <Tag id={id} />
                 <div className="product__same">
                   <div className="same__title">
                     <Tittle_part text={t('common.same')} />
                     <Togle></Togle>
+                    {Bool ? <SameItem items={same} /> : <div></div>}
                   </div>
                 </div>
               </div>

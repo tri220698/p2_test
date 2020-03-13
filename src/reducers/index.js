@@ -4,13 +4,15 @@ import cart from './cart'
 import products from './product'
 import sort from './sort'
 import order from './order'
+import cate from './category'
 
 const allReducers = combineReducers({
   user,
   cart,
   products,
   sort,
-  order
+  order,
+  cate
 })
 
 export default allReducers
