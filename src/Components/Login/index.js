@@ -31,6 +31,7 @@ const Login = ({ history }) => {
       }
       else if (findUser.role === 0 && findUser.password === user.password) {
         alert('admin')
+        sessionStorage.setItem('userData', JSON.stringify(findUser))
         window.location.pathname = "/admin"
       }
       else if (findUser.role === 1 && findUser.password === user.password) {

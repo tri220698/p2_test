@@ -6,13 +6,21 @@ import Routers from './Route'
 import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
-  return (
-    <Router>
-      <MenuMaster />
-      <Routers />
-      <Footer />
-    </Router>
-  );
+  if(window.location.pathname.search('admin') !== -1) {
+    return (
+      <Router>
+        <Routers />
+      </Router>
+    )
+  }else {
+    return (
+      <Router>
+        <MenuMaster />
+        <Routers />
+        <Footer />
+      </Router>
+    );  
+  }
 }
 
 export default App;
