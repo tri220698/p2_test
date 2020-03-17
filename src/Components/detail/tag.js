@@ -3,10 +3,8 @@ import Info from './Info'
 import Comment from './comment'
 import { useTranslation } from 'react-i18next';
 
-
 const Tag = (props) => {
   const { t } = useTranslation();
-
 
   return (
     <React.Fragment>

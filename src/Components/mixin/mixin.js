@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom'
 
 
 export const Tittle_part = (props) => {
@@ -169,23 +170,23 @@ export const checkInclude = (data, item) => {
 }
 
 export const displayStar = (countRate) => {
-  if(countRate > 0) {
+  if (countRate > 0) {
     let element = []
-    for(let i = 1 ; i <= countRate ; i++) {
-      element.push(<i key={i} className="fa fa-star"/>)
+    for (let i = 1; i <= countRate; i++) {
+      element.push(<i key={i} className="fa fa-star" />)
     }
-    for(let i = 1 ; i <= (5 - countRate) ; i++) {
-      element.push(<i key={countRate+i} className="far fa-star"/>)
+    for (let i = 1; i <= (5 - countRate); i++) {
+      element.push(<i key={countRate + i} className="far fa-star" />)
     }
     return element;
-  }else {
+  } else {
     return (
       <React.Fragment>
-        <i className="far fa-star"/>
-        <i className="far fa-star"/>
-        <i className="far fa-star"/>
-        <i className="far fa-star"/>
-        <i className="far fa-star"/>
+        <i className="far fa-star" />
+        <i className="far fa-star" />
+        <i className="far fa-star" />
+        <i className="far fa-star" />
+        <i className="far fa-star" />
       </React.Fragment>
     );
   }
@@ -206,9 +207,9 @@ export const formatDate = (date) => {
   var ampm = hours >= 12 ? 'pm' : 'am';
   hours = hours % 12;
   hours = hours ? hours : 12;
-  minutes = minutes < 10 ? '0'+minutes : minutes;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
   var strTime = hours + ':' + minutes + ' ' + ampm;
-  return date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "  " + strTime;
+  return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 }
 
 export const TotalQuan = (data) => {
@@ -217,4 +218,72 @@ export const TotalQuan = (data) => {
     totalQuantity += parseInt(item.quantity)
   })
   return totalQuantity
+}
+
+export const localUrl = window.location.protocol + "//" + window.location.host;
+
+export const ProductItem = (props) => {
+
+  const { items, add } = props
+  const { t } = useTranslation();
+
+  return (
+    <React.Fragment>
+      {items.map((item, index) => (
+        < div className="product__item" key={index}>
+          <div className="item__img">
+            <img src={process.env.PUBLIC_URL + item.image} alt="logo" className="img"></img>
+          </div>
+          <div className="item__info">
+            <h4 className="-price">{formatter.format(item.price)}</h4>
+            <h4>{item.name}</h4>
+            <p>
+              {displayStar(Math.round(item.countRate / item.votes))}
+              <br />
+              {item.votes + " ( " + t('common.rate') + " )"}
+            </p>
+          </div>
+          <div className="item__button">
+            <Link className="-left" to="/login" onClick={(e) => { add(e, item) }
+            }>{t('button.buyNow')}</Link>
+            <a className="-right" href={localUrl + "/detail/" + item.id} >{t('button.detail')}</a>
+          </div>
+        </div >
+      ))}
+    </React.Fragment>
+  )
+}
+
+
+export const ProductLast = (props) => {
+  const { items, add } = props
+  const { t } = useTranslation();
+
+  return (
+    <React.Fragment>
+      {
+        items.map((item, index) => (
+          <div className="product__last -hide" key={index}>
+            <div className="img__last">
+              <img src={process.env.PUBLIC_URL + item.image} alt="logo" className="img"></img>
+            </div>
+            <div className="text__last">
+              <h4>{item.name}</h4>
+              <p>
+                {displayStar(Math.round(item.countRate / item.votes))}
+                {item.votes + " ( " + t('common.rate') + " )"}
+              </p>
+              <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...')}</p>
+              <h4 className="-price">{formatter.format(item.price)}</h4>
+              <div className="item__button">
+                <Link className="-left" to="/login" onClick={(e) => { add(e, item) }
+                }>{t('button.buyNow')}</Link>
+                <a className="-right" href={localUrl + "/detail/" + item.id} >{t('button.detail')}</a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </React.Fragment>
+  )
 }

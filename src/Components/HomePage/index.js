@@ -43,11 +43,11 @@ const HomePage = () => {
         dispatch(getUserCart(user.cart))
         sessionStorage.setItem('userData', JSON.stringify(user))
         const add = await updateUser(user)
-        alert(t('Đã cập nhật'))
+        alert(t('detail.update'))
       }
     }
     else {
-      alert(t('Đăng nhập để mua ngay '))
+      alert(t('detail.warning'))
     }
   }
 
@@ -57,13 +57,13 @@ const HomePage = () => {
     dispatch(addtoCart(item))
     sessionStorage.setItem('userData', JSON.stringify(user))
     const add = await updateUser(user)
-    alert(t('Đã thêm vào giỏi hàng'))
+    alert(t('detail.addCart'))
   }
 
   useEffect(() => {
     const getProduct = async () => {
       const listProduct = await getData('products')
-      setHightlight(() => listProduct.sort((a, b) => a.bought - b.bought).slice(0, 6))
+      setHightlight(() => listProduct.sort((a, b) => b.bought - a.bought).slice(0, 6))
       setNew(() => listProduct.sort(() => Math.random() - 0.5).slice(0, 3))
       setLasest(() => listProduct.sort((a, b) => b.id - a.id).slice(0, 4))
       setHot(() => listProduct.sort(() => Math.random() - 0.5).slice(0, 5))

@@ -70,7 +70,7 @@ const Order = () => {
               <form action="" className="form__regis">
                 <div className="confirm__text" style={{ textAlign: 'center' }}>
                   <h4>{t('header.hello')} {user.name}</h4>
-                  <h5>{t('order.1')}<span>{TotalQuan(cart)}</span> {t('order.2')} <span>{formatter.format(TotalMoney(cart))}</span></h5>
+                  <h5>{t('order.1')}<span>{TotalQuan(cart)}</span> {t('order.2')} <span>{formatter.format(TotalMoney(cart) + TotalMoney(cart) / 10)}</span></h5>
                 </div>
                 <div className="item__button" style={{ margin: '0 auto' }}>
                   <Link className="-right" to="/cart">{t('button.back')}</Link>
